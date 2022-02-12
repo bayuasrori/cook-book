@@ -1,0 +1,43 @@
+type Author {
+  email: String,
+  id: Int,
+  name: String
+}
+
+type Recipe {
+  # Example field (placeholder)
+  id: Int
+  title: String!
+  content: String
+  published: Boolean
+  authorId: Int
+  author: Author
+}
+
+input CreateRecipeInput {
+  # Example field (placeholder)
+  title: String!
+  content: String
+  published: Boolean
+  authorId: Int
+}
+
+input UpdateRecipeInput {
+  id: Int!
+  title: String!
+  content: String
+  published: Boolean
+  authorId: Int
+}
+
+type Query {
+  recipes: [Recipe]!
+  recipe(id: Int!): Recipe
+}
+
+type Mutation {
+  createRecipe(createRecipeInput: CreateRecipeInput!): Recipe!
+  updateRecipe(
+    updateRecipeInput: UpdateRecipeInput!): Recipe!
+  removeRecipe(id: Int!): Recipe
+}

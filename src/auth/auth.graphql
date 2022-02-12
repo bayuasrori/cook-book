@@ -1,0 +1,27 @@
+type Auth {
+    email: String!
+    password: String!
+}
+
+type Token {
+    accessToken: String,
+    refreshToken: String
+}
+
+input SigninLocalInput {
+    email: String!
+    password: String!
+}
+
+input SignUpLocalInput {
+    email: String!
+    password: String!
+    confirmPassword: String!
+}
+
+extend type Mutation {
+    signinLocal( loginInput: SigninLocalInput): Token!
+    signUpLocal( signUpLocalInput: SignUpLocalInput): Token!
+    refreshToken: Token!
+    logOut: Boolean
+}
